@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "top_plus",
+  "version": "${version}",
+  "name": "TOP Plus",
+  "description": "A addon for top fabric",
+  "authors": [
+    "AlphaMode"
+  ],
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "top_plugin": [
+      "me.alphamode.top_plus.TopPlus"
+    ],
+    "main": [
+      "me.alphamode.top_plus.TopPlus"
+    ]
+  },
+  "depends": {
+    "theoneprobe": ">=1.18-5.0.5"
+  }
+}
