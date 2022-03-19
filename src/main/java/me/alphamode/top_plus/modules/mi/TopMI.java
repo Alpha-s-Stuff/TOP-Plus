@@ -5,11 +5,11 @@ import mcjty.theoneprobe.api.*;
 import mcjty.theoneprobe.apiimpl.elements.ElementProgress;
 import mcjty.theoneprobe.config.Config;
 import me.alphamode.top_plus.TopPlus;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.LiteralText;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.World;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 import static mcjty.theoneprobe.api.TextStyleClass.PROGRESS;
 
@@ -18,12 +18,12 @@ public class TopMI implements ITheOneProbePlugin {
     public void onLoad(ITheOneProbe apiInstance) {
         apiInstance.registerProvider(new IProbeInfoProvider() {
             @Override
-            public Identifier getID() {
+            public ResourceLocation getID() {
                 return TopPlus.getResource("mi_plugin");
             }
 
             @Override
-            public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, PlayerEntity player, World world, BlockState blockState, IProbeHitData data) {
+            public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, Player player, Level world, BlockState blockState, IProbeHitData data) {
                 if(world.getBlockEntity(data.getPos()) instanceof EnergyComponentHolder energyComponentHolder)
                     addEnergyInfo(probeInfo, energyComponentHolder.getEnergyComponent().getEu(), energyComponentHolder.getEnergyComponent().getCapacity());
             }
@@ -40,7 +40,7 @@ public class TopMI implements ITheOneProbePlugin {
                             .borderColor(Config.rfbarBorderColor)
                             .numberFormat(Config.rfFormat.get()));
         } else {
-            probeInfo.text(CompoundText.create().style(PROGRESS).text("E: " + ElementProgress.format(energy, Config.rfFormat.get(), new LiteralText("EU"))));
+            probeInfo.text(CompoundText.create().style(PROGRESS).text("E: " + ElementProgress.format(energy, Config.rfFormat.get(), new TextComponent("EU"))));
         }
     }
 }
