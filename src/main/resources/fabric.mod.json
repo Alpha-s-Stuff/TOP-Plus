@@ -16,6 +16,9 @@
     ],
     "main": [
       "me.alphamode.top_plus.TopPlus"
+    ],
+    "client": [
+      "me.alphamode.top_plus.TopPlusClient"
     ]
   },
   "depends": {

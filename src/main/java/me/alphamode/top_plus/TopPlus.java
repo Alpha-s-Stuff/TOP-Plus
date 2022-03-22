@@ -21,8 +21,8 @@ public class TopPlus implements ITheOneProbePlugin, ModInitializer {
 
     @Override
     public void onLoad(ITheOneProbe apiInstance) {
-//        plugins.put("modern_industrialization", TopMI.class);
-//        plugins.put("tconstruct", TopTc.class);
+        plugins.put("modern_industrialization", TopMI.class);
+        plugins.put("tconstruct", TopTc.class);
 
         plugins.forEach((modId, clazz) -> {
             if(FabricLoader.getInstance().isModLoaded(modId)) {
@@ -38,12 +38,6 @@ public class TopPlus implements ITheOneProbePlugin, ModInitializer {
 
     @Override
     public void onInitialize() {
-        ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
-            String modId = Registry.ITEM.getKey(stack.getItem()).getNamespace();
-            lines.add(new TextComponent(ChatFormatting.BLUE + "" + ChatFormatting.ITALIC + FabricLoader.getInstance().getModContainer(modId)
-                    .map(modContainer -> modContainer.getMetadata().getName())
-                    .orElse(StringUtils.capitalize(modId))));
-        });
     }
 
     public static String MOD_ID = "top_plus";

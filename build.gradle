@@ -17,6 +17,7 @@ repositories {
     maven { url = "https://cursemaven.com" }
     maven { url = "https://maven.devos.community/snapshots/" }
     maven { url = "https://maven.devos.community/releases/" }
+    maven { url = uri("https://storage.googleapis.com/devan-maven/") }
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release" }
     maven { url = "https://maven.terraformersmc.com/releases/" }
     maven { url = "https://ladysnake.jfrog.io/artifactory/mods" }
@@ -35,6 +36,8 @@ dependencies {
     modCompileOnly "slimeknights.tconstruct:TConstruct:1.18.1-3.4.1.DEV.a4b9907"
 
     modCompileOnly "curse.maven:modern-industrialization-405388:3646911"
+    modApi "me.shedaniel.cloth.api:cloth-api:3.1.61"
+    modImplementation("net.devtech:arrp:0.5.7")
 }
 
 processResources {
