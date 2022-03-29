@@ -24,7 +24,7 @@ public class TopMI implements ITheOneProbePlugin {
 
             @Override
             public void addProbeInfo(ProbeMode mode, IProbeInfo probeInfo, Player player, Level world, BlockState blockState, IProbeHitData data) {
-                if(world.getBlockEntity(data.getPos()) instanceof EnergyComponentHolder energyComponentHolder)
+                if(world.getBlockEntity(data.getPos()) != null && world.getBlockEntity(data.getPos()) instanceof EnergyComponentHolder energyComponentHolder)
                     addEnergyInfo(probeInfo, energyComponentHolder.getEnergyComponent().getEu(), energyComponentHolder.getEnergyComponent().getCapacity());
             }
         });
